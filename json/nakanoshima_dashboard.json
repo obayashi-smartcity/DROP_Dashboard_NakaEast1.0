@@ -1,0 +1,509 @@
+{
+  "meta": {
+    "schema_version": 1,
+    "generated_at": "2026-11-02T02:48:50.110546+00:00",
+    "latest_timestamp": "2026-11-01 19:26:20.705",
+    "period": {
+      "start": "2026-10-17",
+      "end": "2026-11-01"
+    }
+  },
+  "summary": {
+    "registration_count": 36,
+    "drop_count": 14
+  },
+  "registrations": [
+    {
+      "date": "2026-10-17",
+      "count": 10,
+      "nicknames": [
+        "Kaito.N",
+        "mikehama",
+        "なみ",
+        "ねこ",
+        "はやお",
+        "はる",
+        "ひか",
+        "らん",
+        "キタちゃん",
+        "ヤス"
+      ]
+    },
+    {
+      "date": "2026-10-20",
+      "count": 4,
+      "nicknames": [
+        "yoshi",
+        "さとえ",
+        "れいちゃん",
+        "ジョニー"
+      ]
+    },
+    {
+      "date": "2026-10-21",
+      "count": 1,
+      "nicknames": [
+        "広光"
+      ]
+    },
+    {
+      "date": "2026-10-23",
+      "count": 3,
+      "nicknames": [
+        "kazarakan",
+        "ty",
+        "いくる"
+      ]
+    },
+    {
+      "date": "2026-10-24",
+      "count": 10,
+      "nicknames": [
+        "KIKI",
+        "TERUちゃん",
+        "furucchi",
+        "kei",
+        "satoteru",
+        "skr",
+        "あ",
+        "まあ",
+        "ジー",
+        "街好き"
+      ]
+    },
+    {
+      "date": "2026-10-25",
+      "count": 1,
+      "nicknames": [
+        "クリマロン"
+      ]
+    },
+    {
+      "date": "2026-10-27",
+      "count": 1,
+      "nicknames": [
+        "くふ"
+      ]
+    },
+    {
+      "date": "2026-10-28",
+      "count": 1,
+      "nicknames": [
+        "べ"
+      ]
+    },
+    {
+      "date": "2026-10-31",
+      "count": 3,
+      "nicknames": [
+        "ahiruahiru24",
+        "ソーくん",
+        "ヤスコ"
+      ]
+    },
+    {
+      "date": "2026-11-01",
+      "count": 2,
+      "nicknames": [
+        "MF_Camera",
+        "あかね"
+      ]
+    }
+  ],
+  "users": [
+    {
+      "account_id": "57142a58-7071-70ce-ccc0-4196c90d3b43",
+      "nickname": "なみ",
+      "created_at": "2026-10-17 11:56:46",
+      "gender": "女性",
+      "age_group": "50代"
+    },
+    {
+      "account_id": "97045aa8-7001-7068-0202-02b4db51cc76",
+      "nickname": "ひか",
+      "created_at": "2026-10-17 12:01:09",
+      "gender": "女性",
+      "age_group": "10代"
+    },
+    {
+      "account_id": "f7349af8-1051-70e7-2bd1-b115a5cf9b8a",
+      "nickname": "はやお",
+      "created_at": "2026-10-17 12:01:19",
+      "gender": "男性",
+      "age_group": "10代"
+    },
+    {
+      "account_id": "67940a78-7081-7070-7daf-90f04ff93491",
+      "nickname": "ヤス",
+      "created_at": "2026-10-17 12:56:59",
+      "gender": "女性",
+      "age_group": "50代"
+    },
+    {
+      "account_id": "7754cac8-7081-7090-4631-00d0d6faac17",
+      "nickname": "Kaito.N",
+      "created_at": "2026-10-17 12:58:27",
+      "gender": "男性",
+      "age_group": "30代"
+    },
+    {
+      "account_id": "d7c4aa28-c0d1-7064-58f2-da4074168899",
+      "nickname": "ねこ",
+      "created_at": "2026-10-17 13:01:36",
+      "gender": "女性",
+      "age_group": "20代"
+    },
+    {
+      "account_id": "67e43ac8-50e1-70f0-1ba0-d8e84749542d",
+      "nickname": "mikehama",
+      "created_at": "2026-10-17 13:49:25",
+      "gender": "男性",
+      "age_group": "50代"
+    },
+    {
+      "account_id": "17142a68-3071-701c-0c08-40e7312fe3b9",
+      "nickname": "らん",
+      "created_at": "2026-10-17 13:54:58",
+      "gender": "女性",
+      "age_group": "20代"
+    },
+    {
+      "account_id": "57145a18-80b1-7060-d5bc-7f525e96e44d",
+      "nickname": "はる",
+      "created_at": "2026-10-17 16:47:57",
+      "gender": "男性",
+      "age_group": "20代"
+    },
+    {
+      "account_id": "87e4da68-1001-70b0-261a-8e9384bcf145",
+      "nickname": "キタちゃん",
+      "created_at": "2026-10-17 16:48:59",
+      "gender": "女性",
+      "age_group": "20代"
+    },
+    {
+      "account_id": "f7b4ea08-7091-70c6-6281-d5825e51037d",
+      "nickname": "yoshi",
+      "created_at": "2026-10-20 01:27:22",
+      "gender": "男性",
+      "age_group": "40代"
+    },
+    {
+      "account_id": "0754da18-c021-7053-031f-24f1a6fa8e8c",
+      "nickname": "さとえ",
+      "created_at": "2026-10-20 07:17:48",
+      "gender": "女性",
+      "age_group": "40代"
+    },
+    {
+      "account_id": "07145ae8-0011-7044-71ac-ceb123ab67b2",
+      "nickname": "れいちゃん",
+      "created_at": "2026-10-20 17:17:38",
+      "gender": "男性",
+      "age_group": "60代"
+    },
+    {
+      "account_id": "37d40a38-9041-7049-eb96-c7b515e13a3c",
+      "nickname": "ジョニー",
+      "created_at": "2026-10-20 19:06:15",
+      "gender": "男性",
+      "age_group": "20代"
+    },
+    {
+      "account_id": "87b4da48-1031-70ce-5bfe-f158eb7617a5",
+      "nickname": "広光",
+      "created_at": "2026-10-21 19:18:37",
+      "gender": "男性",
+      "age_group": "30代"
+    },
+    {
+      "account_id": "c7740a18-a0f1-7051-e2c8-11de5bdd631a",
+      "nickname": "kazarakan",
+      "created_at": "2026-10-23 12:17:58",
+      "gender": "男性",
+      "age_group": "70代"
+    },
+    {
+      "account_id": "2714da58-8051-70f1-4c6d-4a0a2f85c86b",
+      "nickname": "ty",
+      "created_at": "2026-10-23 20:46:07",
+      "gender": "女性",
+      "age_group": "40代"
+    },
+    {
+      "account_id": "b7f49a98-6011-7019-367b-d436966ed426",
+      "nickname": "いくる",
+      "created_at": "2026-10-23 21:40:29",
+      "gender": "女性",
+      "age_group": "60代"
+    },
+    {
+      "account_id": "d7d46a78-1001-705b-3eb8-ceb42a39c456",
+      "nickname": "KIKI",
+      "created_at": "2026-10-24 00:59:43",
+      "gender": "無回答",
+      "age_group": "30代"
+    },
+    {
+      "account_id": "e7a44a88-b0f1-7009-1904-2bc84d62cf13",
+      "nickname": "satoteru",
+      "created_at": "2026-10-24 03:23:31",
+      "gender": "男性",
+      "age_group": "50代"
+    },
+    {
+      "account_id": "27641a08-0071-7093-4c90-cdb6f07d89fb",
+      "nickname": "街好き",
+      "created_at": "2026-10-24 08:45:12",
+      "gender": "男性",
+      "age_group": "40代"
+    },
+    {
+      "account_id": "2774fa88-50c1-7070-c7c0-a6b9791267a8",
+      "nickname": "あ",
+      "created_at": "2026-10-24 11:17:36",
+      "gender": "無回答",
+      "age_group": "20代"
+    },
+    {
+      "account_id": "47f40a78-5091-7056-8745-61ede362362b",
+      "nickname": "TERUちゃん",
+      "created_at": "2026-10-24 12:46:24",
+      "gender": "女性",
+      "age_group": "50代"
+    },
+    {
+      "account_id": "57349a68-d0d1-70da-d697-4a29270ae468",
+      "nickname": "ジー",
+      "created_at": "2026-10-24 13:17:47",
+      "gender": "男性",
+      "age_group": "60代"
+    },
+    {
+      "account_id": "b7740a28-a061-707b-759e-21958e6844cc",
+      "nickname": "kei",
+      "created_at": "2026-10-24 13:21:48",
+      "gender": "男性",
+      "age_group": "50代"
+    },
+    {
+      "account_id": "47b48a18-8031-70f9-7b9d-0130450a7e08",
+      "nickname": "furucchi",
+      "created_at": "2026-10-24 14:19:44",
+      "gender": "無回答",
+      "age_group": "60代"
+    },
+    {
+      "account_id": "37343af8-90d1-708d-e0ce-761c377d85f4",
+      "nickname": "skr",
+      "created_at": "2026-10-24 14:20:32",
+      "gender": "女性",
+      "age_group": "20代"
+    },
+    {
+      "account_id": "77b4ca38-3021-7039-be36-a2b47d42ec0f",
+      "nickname": "まあ",
+      "created_at": "2026-10-24 23:44:29",
+      "gender": "女性",
+      "age_group": "30代"
+    },
+    {
+      "account_id": "b7947ab8-30f1-70cd-9eec-081085c0f5b6",
+      "nickname": "クリマロン",
+      "created_at": "2026-10-25 13:53:01",
+      "gender": "男性",
+      "age_group": "50代"
+    },
+    {
+      "account_id": "57848a18-c071-7052-75eb-3c458933b28d",
+      "nickname": "くふ",
+      "created_at": "2026-10-27 22:27:52",
+      "gender": "無回答",
+      "age_group": "30代"
+    },
+    {
+      "account_id": "97d4dab8-7081-70f5-a187-8d8325a94df8",
+      "nickname": "べ",
+      "created_at": "2026-10-28 12:55:39",
+      "gender": "男性",
+      "age_group": "40代"
+    },
+    {
+      "account_id": "7774aa48-f061-70ac-fbfa-accc9790486f",
+      "nickname": "ソーくん",
+      "created_at": "2026-10-31 11:04:21",
+      "gender": "男性",
+      "age_group": "20代"
+    },
+    {
+      "account_id": "77b48a18-8031-7074-03aa-add4b430487f",
+      "nickname": "ヤスコ",
+      "created_at": "2026-10-31 15:13:44",
+      "gender": "女性",
+      "age_group": "40代"
+    },
+    {
+      "account_id": "87a4aa88-a031-709c-ece6-0bfc630c8308",
+      "nickname": "ahiruahiru24",
+      "created_at": "2026-10-31 17:25:17",
+      "gender": "女性",
+      "age_group": "30代"
+    },
+    {
+      "account_id": "97a4da08-0051-70a0-5f36-ea774abb1061",
+      "nickname": "MF_Camera",
+      "created_at": "2026-11-01 19:17:10",
+      "gender": "男性",
+      "age_group": "30代"
+    },
+    {
+      "account_id": "7744fa88-4021-70cf-0e9f-7d610608ccce",
+      "nickname": "あかね",
+      "created_at": "2026-11-01 19:18:06",
+      "gender": "女性",
+      "age_group": "40代"
+    }
+  ],
+  "drops": [
+    {
+      "posted_at": "2026-10-17 12:03:06.953",
+      "account_id": "97045aa8-7001-7068-0202-02b4db51cc76",
+      "nickname": "ひか",
+      "sentence": "赤バラ めっちゃ綺麗でした！ 中之島また行きたい 晴天 はなことは",
+      "image_file_path": "https://adpf-poc.com/machiapps/userdata/photos/machi/5865b72c-0283-407e-a343-2e473692c1a7.jpeg",
+      "image_file_path_thumbnail": "https://adpf-poc.com/machiapps/userdata/photos/machi/5865b72c-0283-407e-a343-2e473692c1a7_thumbnail.jpeg",
+      "latitude": 34.69240833333333,
+      "longitude": 135.50799444444445
+    },
+    {
+      "posted_at": "2026-10-17 12:03:44.603",
+      "account_id": "f7349af8-1051-70e7-2bd1-b115a5cf9b8a",
+      "nickname": "はやお",
+      "sentence": "バラが綺麗だった！ リベンジができて嬉しい 静かで落ち着いていて散歩にちょうどいい",
+      "image_file_path": "https://adpf-poc.com/machiapps/userdata/photos/machi/77f873cc-a6e7-4e49-8e9c-bafc2e0f213f.jpeg",
+      "image_file_path_thumbnail": "https://adpf-poc.com/machiapps/userdata/photos/machi/77f873cc-a6e7-4e49-8e9c-bafc2e0f213f_thumbnail.jpeg",
+      "latitude": 34.69214722222222,
+      "longitude": 135.50892777777779
+    },
+    {
+      "posted_at": "2026-10-17 13:05:08.281",
+      "account_id": "67940a78-7081-7070-7daf-90f04ff93491",
+      "nickname": "ヤス",
+      "sentence": "蚤の市目指して北浜に堺筋本町から 歩く事、淀屋橋まで歩く事 いい感じのとこ出ました。googleより 直感ナイス私👍",
+      "image_file_path": "https://adpf-poc.com/machiapps/userdata/photos/machi/c7ce05ee-57d6-4261-91fa-9dd53df98036.jpeg",
+      "image_file_path_thumbnail": "https://adpf-poc.com/machiapps/userdata/photos/machi/c7ce05ee-57d6-4261-91fa-9dd53df98036_thumbnail.jpeg",
+      "latitude": 34.692626061220516,
+      "longitude": 135.50374948566858
+    },
+    {
+      "posted_at": "2026-10-17 13:53:13.007",
+      "account_id": "67e43ac8-50e1-70f0-1ba0-d8e84749542d",
+      "nickname": "mikehama",
+      "sentence": "雲のない 秋晴の 午後に そよ風を 感じながら",
+      "image_file_path": "https://adpf-poc.com/machiapps/userdata/photos/machi/6b5bdc8a-7100-40a6-9785-b0e1f631f4e5.jpeg",
+      "image_file_path_thumbnail": "https://adpf-poc.com/machiapps/userdata/photos/machi/6b5bdc8a-7100-40a6-9785-b0e1f631f4e5_thumbnail.jpeg",
+      "latitude": 34.69166111111111,
+      "longitude": 135.51039166666666
+    },
+    {
+      "posted_at": "2026-10-17 17:19:04.202",
+      "account_id": "87e4da68-1001-70b0-261a-8e9384bcf145",
+      "nickname": "キタちゃん",
+      "sentence": "次は乗りたいな 次こそは乗りたいな 今度こそ乗りたいな 時間内に行かなくちゃ 水上散歩",
+      "image_file_path": "https://adpf-poc.com/machiapps/userdata/photos/machi/bd5c3b7c-157a-42d6-9e67-97df8a958878.jpeg",
+      "image_file_path_thumbnail": "https://adpf-poc.com/machiapps/userdata/photos/machi/bd5c3b7c-157a-42d6-9e67-97df8a958878_thumbnail.jpeg",
+      "latitude": 34.693913,
+      "longitude": 135.502298
+    },
+    {
+      "posted_at": "2026-10-20 19:12:31.362",
+      "account_id": "37d40a38-9041-7049-eb96-c7b515e13a3c",
+      "nickname": "ジョニー",
+      "sentence": "鼻のアップで失礼します こちら現場の鼻です 本犬は真剣です 嗅ぐことに人生を捧ぐ 鼻だけで飯食ってます",
+      "image_file_path": "https://adpf-poc.com/machiapps/userdata/photos/machi/bc4b172e-16db-4f95-815f-eab3a7873a09.jpeg",
+      "image_file_path_thumbnail": "https://adpf-poc.com/machiapps/userdata/photos/machi/bc4b172e-16db-4f95-815f-eab3a7873a09_thumbnail.jpeg",
+      "latitude": 34.69401555635586,
+      "longitude": 135.50179517355775
+    },
+    {
+      "posted_at": "2026-10-24 14:25:21.024",
+      "account_id": "47b48a18-8031-70f9-7b9d-0130450a7e08",
+      "nickname": "furucchi",
+      "sentence": "水辺ってちょっといいことないですか！ 水辺って心安らぎますよね！ 大阪って川や運河が多いですよね！",
+      "image_file_path": "https://adpf-poc.com/machiapps/userdata/photos/machi/ba00ab99-19cb-45d4-87d6-be917329bc8a.jpeg",
+      "image_file_path_thumbnail": "https://adpf-poc.com/machiapps/userdata/photos/machi/ba00ab99-19cb-45d4-87d6-be917329bc8a_thumbnail.jpeg",
+      "latitude": 34.69374,
+      "longitude": 135.50218
+    },
+    {
+      "posted_at": "2026-10-24 15:38:25.625",
+      "account_id": "37343af8-90d1-708d-e0ce-761c377d85f4",
+      "nickname": "skr",
+      "sentence": "バラが見頃のバラ園で お花のカードをもらった 水辺の社会実験らしい 仮設のテラスでゆっくり過ごしてみる",
+      "image_file_path": "https://adpf-poc.com/machiapps/userdata/photos/machi/c8aa07e9-6f82-4a9e-a339-3c31b96c592f.jpeg",
+      "image_file_path_thumbnail": "https://adpf-poc.com/machiapps/userdata/photos/machi/c8aa07e9-6f82-4a9e-a339-3c31b96c592f_thumbnail.jpeg",
+      "latitude": 34.69245146202552,
+      "longitude": 135.5088334479471
+    },
+    {
+      "posted_at": "2026-10-24 15:44:09.681",
+      "account_id": "37343af8-90d1-708d-e0ce-761c377d85f4",
+      "nickname": "skr",
+      "sentence": "期間限定のカフェが出現！ サンドイッチを購入して、 水際につくられたテラスで食べてみる 水辺を感じられて秋の風が気持ちいい",
+      "image_file_path": "https://adpf-poc.com/machiapps/userdata/photos/machi/f74df3a6-4dc6-4006-b189-3a85b236e90d.jpeg",
+      "image_file_path_thumbnail": "https://adpf-poc.com/machiapps/userdata/photos/machi/f74df3a6-4dc6-4006-b189-3a85b236e90d_thumbnail.jpeg",
+      "latitude": 34.69241029636125,
+      "longitude": 135.50875675314052
+    },
+    {
+      "posted_at": "2026-10-28 12:59:43.028",
+      "account_id": "97d4dab8-7081-70f5-a187-8d8325a94df8",
+      "nickname": "べ",
+      "sentence": "水都大阪 ブリッジテラスで 最高の眺めで ゆったりくつろいで 社会実験中です",
+      "image_file_path": "https://adpf-poc.com/machiapps/userdata/photos/machi/89c8d0f9-875a-465b-a978-e93a9d5a92e8.jpeg",
+      "image_file_path_thumbnail": "https://adpf-poc.com/machiapps/userdata/photos/machi/89c8d0f9-875a-465b-a978-e93a9d5a92e8_thumbnail.jpeg",
+      "latitude": 34.692931681178294,
+      "longitude": 135.4968994295467
+    },
+    {
+      "posted_at": "2026-10-28 13:40:17.060",
+      "account_id": "97d4dab8-7081-70f5-a187-8d8325a94df8",
+      "nickname": "べ",
+      "sentence": "水都大阪 ブリッジテラス 橋の上のオープンスペース 社会実験です",
+      "image_file_path": "https://adpf-poc.com/machiapps/userdata/photos/machi/d1849470-e452-447f-8ccb-916e439d1274.jpeg",
+      "image_file_path_thumbnail": "https://adpf-poc.com/machiapps/userdata/photos/machi/d1849470-e452-447f-8ccb-916e439d1274_thumbnail.jpeg",
+      "latitude": 34.6928108903903,
+      "longitude": 135.49685416165906
+    },
+    {
+      "posted_at": "2026-10-31 17:27:47.747",
+      "account_id": "87a4aa88-a031-709c-ece6-0bfc630c8308",
+      "nickname": "ahiruahiru24",
+      "sentence": "夕暮れが楽しい季節。 日が落ちはじめて 暖色の灯りが水面に反射する 眺めて落ち着く 秋の中之島。",
+      "image_file_path": "https://adpf-poc.com/machiapps/userdata/photos/machi/3cc392b5-9529-451f-abf9-53a4f3923832.jpeg",
+      "image_file_path_thumbnail": "https://adpf-poc.com/machiapps/userdata/photos/machi/3cc392b5-9529-451f-abf9-53a4f3923832_thumbnail.jpeg",
+      "latitude": 34.693913,
+      "longitude": 135.502298
+    },
+    {
+      "posted_at": "2026-11-01 19:23:39.671",
+      "account_id": "7744fa88-4021-70cf-0e9f-7d610608ccce",
+      "nickname": "あかね",
+      "sentence": "夜散歩 水上テラス 水面 灯 中之島east",
+      "image_file_path": "https://adpf-poc.com/machiapps/userdata/photos/machi/47ed0ddf-3efd-496b-b7b8-3064fea6e9a3.jpeg",
+      "image_file_path_thumbnail": "https://adpf-poc.com/machiapps/userdata/photos/machi/47ed0ddf-3efd-496b-b7b8-3064fea6e9a3_thumbnail.jpeg",
+      "latitude": 34.693913,
+      "longitude": 135.502298
+    },
+    {
+      "posted_at": "2026-11-01 19:26:20.705",
+      "account_id": "97a4da08-0051-70a0-5f36-ea774abb1061",
+      "nickname": "MF_Camera",
+      "sentence": "日曜日の夜 彼女との散歩中に たまたま見つけた 水上テラスで 中之島の水面夜景を堪能",
+      "image_file_path": "https://adpf-poc.com/machiapps/userdata/photos/machi/42ec7b2c-25b9-48d1-ac6e-25aff93328c6.jpeg",
+      "image_file_path_thumbnail": "https://adpf-poc.com/machiapps/userdata/photos/machi/42ec7b2c-25b9-48d1-ac6e-25aff93328c6_thumbnail.jpeg",
+      "latitude": 34.69229810229792,
+      "longitude": 135.508654232189
+    }
+  ]
+}

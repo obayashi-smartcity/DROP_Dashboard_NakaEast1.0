@@ -1,4 +1,8 @@
-# User working files
+# Local source data and generated output
 .memo/
-json/nakanoshima_dashboard.json
-_site/
+.venv/
+
+# Python cache
+__pycache__/
+*.py[cod]
+.pytest_cache/

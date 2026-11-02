@@ -1,27 +1,35 @@
-# 中之島ダッシュボード
+# GitHub Pages 公開手順
 
-## ローカルでの作成と確認
+## 初回設定
 
-```powershell
-python -m unittest discover -s python -v
-python python/prepare_nakanoshima_data.py `
-  --users-csv .memo/datasource/mart_user.csv `
-  --drops-csv .memo/datasource/mart_drop.csv `
-  --output json/nakanoshima_dashboard.json
-python -m http.server --bind 127.0.0.1 8000
-```
+リポジトリの **Settings > Pages > Build and deployment** で、次の公開元を選択します。
 
-ブラウザーで `http://127.0.0.1:8000` を開きます。生成物の`json/nakanoshima_dashboard.json`とPages用の`_site/`はGit管理対象外です。
+- Source: **Deploy from a branch**
+- Branch: デフォルトブランチ
+- Folder: **/(root)**
 
-## GitHub Pagesへの公開
+保存後、公開元ブランチへのpushでサイトが更新されます。ルートの `index.html` がトップページです。GitHub Pagesのブランチ公開ではPages側のビルドが行われますが、リポジトリ独自のPagesデプロイworkflowやPython実行環境は使いません。
 
-このリポジトリには元CSVも生成JSONもコミットしません。workflowは手動実行時に専用Windows runner上のCSVを読み、JSONを生成してPages artifactにだけ格納します。
+## データ更新
 
-1. `nakanoshima-data`ラベルを付けた専用のWindows x64 self-hosted runnerを登録します。CSVはrunnerの作業ディレクトリ外に置きます。
-2. リポジトリのActions変数`NAKANOSHIMA_DATA_DIR`に、`mart_user.csv`と`mart_drop.csv`を置いたディレクトリを設定します。
-3. リポジトリ設定のPagesで公開元を`GitHub Actions`にします。
-4. 保護されたブランチ上で`Deploy Nakanoshima dashboard` workflowを手動実行します。workflow_dispatch以外では起動しません。
+1. `.memo/datasource/mart_user.csv` と `.memo/datasource/mart_drop.csv` をローカルで更新します。CSVはGitに追加しません。
+2. テストとJSON生成を実行します。
 
-公開時はPages artifactにJSONが含まれます。URLを告知しなくても、公開後は誰でもURLから閲覧・保存・共有できます。JSONには`account_id`、ニックネーム、登録日時、年代、性別、投稿本文、地図表示用の対象投稿の緯度・経度、および投稿画像の`image_file_path`と`image_file_path_thumbnail`が含まれます。画像ファイル本体はartifactへコピーせず、ブラウザーから各URLを読み込みます。公開承認を得たデータと画像URLだけをrunnerに配置してください。CARTO APIキーはブラウザーから参照される公開設定です。
+   ```powershell
+   python -m unittest discover -s python -v
+   python python/prepare_nakanoshima_data.py `
+     --users-csv .memo/datasource/mart_user.csv `
+     --drops-csv .memo/datasource/mart_drop.csv `
+     --output json/nakanoshima_dashboard.json
+   ```
 
-データ更新後の再公開は、専用runner上のCSVを更新してworkflowを再実行します。対象件数が0件、tenant不一致、キー欠損・投稿ID重複、日付不正があればJSON生成を中止します。
+3. `json/nakanoshima_dashboard.json` の差分を確認し、公開してよいデータであることを確認します。
+4. JSONと必要なアプリ変更をコミットし、デフォルトブランチへpushします。
+
+PagesはPythonを実行しません。CSVが変わってもJSONは自動生成されないため、更新のたびにローカル生成したJSONをコミットしてください。投稿画像はファイルをリポジトリにコピーせず、JSONに記録されたURLをブラウザーから参照します。
+
+## 公開データの注意
+
+Pagesはインターネット上に公開されます。JSONにはアカウントID、ニックネーム、登録日時、年代、性別、投稿本文、対象投稿の座標、画像URLが含まれます。公開承認済みのデータのみをJSONに含めてください。CARTO APIキーはブラウザーに配信されるため、公開キーとして扱ってください。
+
+`.memo/` はGitignore対象であり、現在Git追跡されていません。ただし、Gitignoreは追跡済みファイルを除外しません。公開前には `git status` とコミット内容を確認してください。

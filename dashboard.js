@@ -1,8 +1,6 @@
-const DATA_URL = "json/nakanoshima_dashboard.json";
 const TOKYO_TIME_ZONE = "Asia/Tokyo";
 
 const elements = {
-  status: document.getElementById("data-status"),
   period: document.getElementById("period"),
   registrationCount: document.getElementById("registration-count"),
   dropCount: document.getElementById("drop-count"),
@@ -158,17 +156,14 @@ function renderPosts(posts) {
 }
 
 function showFailure(error) {
-  elements.status.classList.add("is-error");
-  elements.status.lastElementChild.textContent = "データを読み込めません";
+  window.DashboardData.showError();
   elements.message.hidden = false;
   elements.message.textContent = `表示用データの読み込みに失敗しました。${error.message}`;
 }
 
 async function loadDashboard() {
   try {
-    const response = await fetch(DATA_URL);
-    if (!response.ok) throw new Error(`HTTP ${response.status}`);
-    const data = await response.json();
+    const data = await window.DashboardData.load();
     if (!data.meta?.period || !data.summary || !Array.isArray(data.registrations) || !Array.isArray(data.drops)) {
       throw new Error("JSONの形式が想定と異なります");
     }
@@ -179,8 +174,7 @@ async function loadDashboard() {
     const updatedAt = dateTimeFormat.format(new Date(data.meta.generated_at));
     elements.updatedAt.textContent = updatedAt;
     elements.footerUpdated.textContent = updatedAt;
-    elements.status.classList.add("is-ready");
-    elements.status.lastElementChild.textContent = "データ更新済み";
+    window.DashboardData.updateLatestTimestamp(data);
     renderChart(data.registrations, data.meta.period);
     renderDailyRegistrations(data.registrations);
     renderPosts(data.drops);

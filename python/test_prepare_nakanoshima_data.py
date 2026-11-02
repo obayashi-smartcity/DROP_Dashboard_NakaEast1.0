@@ -125,16 +125,20 @@ class PrepareNakanoshimaDataTests(unittest.TestCase):
         self.assertEqual(payload["registrations"][0]["date"], "2026-10-17")
         self.assertEqual(payload["registrations"][0]["nicknames"], ["First Nick"])
         self.assertEqual(payload["drops"][0]["nickname"], "First Nick")
+        self.assertEqual(payload["drops"][0]["latitude"], 34.7)
+        self.assertEqual(payload["drops"][0]["longitude"], 135.5)
+        self.assertEqual(payload["meta"]["latest_timestamp"], "2026-10-17 09:00:00")
         self.assertNotIn("not-registered", json.dumps(payload))
 
-    def test_public_payload_omits_source_and_location_fields(self) -> None:
+    def test_public_payload_keeps_only_post_coordinates(self) -> None:
         serialized = json.dumps(self.build_data())
 
         self.assertIn('"account_id": "duplicate"', serialized)
+        self.assertIn('"latitude": 34.7', serialized)
+        self.assertIn('"longitude": 135.5', serialized)
         self.assertNotIn("image_file_path", serialized)
-        self.assertNotIn("latitude", serialized)
-        self.assertNotIn("longitude", serialized)
         self.assertNotIn("private.invalid", serialized)
+        self.assertNotIn('"latitude"', json.dumps(self.build_data()["users"]))
 
     def test_tenant_mismatch_stops_generation(self) -> None:
         self.build_data()

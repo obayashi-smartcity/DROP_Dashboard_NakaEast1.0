@@ -9,21 +9,44 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;600;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="dashboard.css">
+  <script src="dashboard-data.js" defer></script>
   <script src="dashboard.js" defer></script>
 </head>
 <body>
-  <header class="masthead">
-    <a class="wordmark" href="#top" aria-label="中之島ダッシュボードの先頭へ">
-      <span class="wordmark-mark" aria-hidden="true">D</span>
-      <span>DROP <span class="wordmark-divider">/</span> NAKANOSHIMA</span>
-    </a>
-    <div class="data-status" id="data-status" role="status" aria-live="polite">
-      <span class="status-dot" aria-hidden="true"></span>
-      <span>データを読み込み中</span>
-    </div>
-  </header>
+  <div class="dashboard-layout">
+    <aside class="sidebar" aria-label="ダッシュボードメニュー">
+      <a class="brand" href="index.html" aria-label="DROP 中之島サマリー">
+        <span class="brand-name">DROP<span>.</span></span>
+        <span class="brand-subtitle">NAKANOSHIMA</span>
+      </a>
+      <nav class="nav-group" aria-label="Dashboards">
+        <p class="nav-caption">Dashboards</p>
+        <a class="nav-link active" href="index.html" aria-current="page">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V9m5 10V5m5 14v-7m5 7V3"/></svg>
+          Summary
+        </a>
+        <a class="nav-link" href="users.html">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c1-3.5 3.5-5.2 7-5.2s6 1.7 7 5.2"/></svg>
+          アカウント登録
+        </a>
+        <a class="nav-link" href="drops.html">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 4-5 2v13l5-2 6 2 5-2V4l-5 2-6-2Zm0 0v13m6-11v13"/></svg>
+          投稿
+        </a>
+      </nav>
+    </aside>
 
-  <main id="top" class="page">
+    <div class="main-column">
+      <header class="masthead">
+        <span class="page-context">SUMMARY</span>
+        <div class="data-status" id="data-status" role="status" aria-live="polite">
+          <span class="status-dot" aria-hidden="true"></span>
+          <span>latest timestamp:</span>
+          <time id="latest-timestamp">—</time>
+        </div>
+      </header>
+
+      <main id="top" class="page">
     <section class="intro" aria-labelledby="page-title">
       <div>
         <p class="eyebrow">利用状況ダッシュボード</p>
@@ -43,7 +66,7 @@
         <strong class="metric-value" id="drop-count">—</strong>
         <span class="metric-unit">件</span>
       </article>
-      <p class="updated">最終更新 <time id="updated-at">—</time></p>
+      <p class="updated">JSON生成 <time id="updated-at">—</time></p>
     </section>
 
     <section class="section registrations" aria-labelledby="registration-title">
@@ -75,7 +98,9 @@
     </section>
 
     <p class="load-message" id="load-message" hidden></p>
-    <footer class="page-footer">データ更新 <time id="footer-updated">—</time></footer>
-  </main>
+    <footer class="page-footer">JSON生成日時 <time id="footer-updated">—</time></footer>
+      </main>
+    </div>
+  </div>
 </body>
 </html>

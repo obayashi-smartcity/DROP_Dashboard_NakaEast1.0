@@ -2,7 +2,7 @@ import argparse
 import csv
 import json
 from collections import defaultdict
-from datetime import date, datetime, timezone
+from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any
 
@@ -10,6 +10,7 @@ from typing import Any
 START_DATE = date(2026, 10, 17)
 EVENT_ID = "nakanoshima"
 SCHEMA_VERSION = 1
+JAPAN_TIME_ZONE = timezone(timedelta(hours=9))
 
 
 def read_csv(path: Path, required_columns: set[str]) -> list[dict[str, str]]:
@@ -23,9 +24,25 @@ def read_csv(path: Path, required_columns: set[str]) -> list[dict[str, str]]:
 
 def parse_row_date(value: str, path: Path, row_number: int) -> date:
     try:
-        return datetime.fromisoformat(value).date()
+        return parse_timestamp(value).date()
     except (TypeError, ValueError) as error:
         raise ValueError(f"{path}: invalid date at row {row_number}: {value!r}") from error
+
+
+def parse_timestamp(value: str) -> datetime:
+    timestamp = datetime.fromisoformat(value.replace("Z", "+00:00"))
+    return timestamp.replace(tzinfo=JAPAN_TIME_ZONE) if timestamp.tzinfo is None else timestamp
+
+
+def valid_coordinates(row: dict[str, str]) -> tuple[float | None, float | None]:
+    try:
+        latitude = float(row["latitude"])
+        longitude = float(row["longitude"])
+    except (KeyError, TypeError, ValueError):
+        return None, None
+    if not (20 <= latitude <= 46 and 122 <= longitude <= 154):
+        return None, None
+    return latitude, longitude
 
 
 def prepare_data(
@@ -45,6 +62,8 @@ def prepare_data(
             "post_dated_at",
             "sentence",
             "account_id",
+            "latitude",
+            "longitude",
         },
     )
 
@@ -106,20 +125,29 @@ def prepare_data(
     if not eligible_drops:
         raise ValueError("No Nakanoshima posts found on or after 2026-10-17")
 
-    drops = [
-        {
-            "posted_at": row["post_dated_at"],
-            "account_id": row["account_id"].strip(),
-            "nickname": users_by_id[row["account_id"].strip()]["account_name"],
-            "sentence": row["sentence"],
-        }
-        for row in eligible_drops
-        if row["account_id"].strip() in users_by_id
-    ]
+    drops = []
+    for row in eligible_drops:
+        account_id = row["account_id"].strip()
+        if account_id not in users_by_id:
+            continue
+        latitude, longitude = valid_coordinates(row)
+        drops.append(
+            {
+                "posted_at": row["post_dated_at"],
+                "account_id": account_id,
+                "nickname": users_by_id[account_id]["account_name"],
+                "sentence": row["sentence"],
+                "latitude": latitude,
+                "longitude": longitude,
+            }
+        )
     drops.sort(key=lambda drop: (drop["posted_at"], drop["account_id"]))
 
+    latest_values = [user["created_at"] for user in users]
+    latest_values.extend(drop["posted_at"] for drop in drops)
+    latest_timestamp = max(latest_values, key=lambda value: parse_timestamp(value).astimezone(timezone.utc))
     observed_dates = [user["created_at"][:10] for user in users]
-    observed_dates.extend(row["post_dated_at"][:10] for row in eligible_drops)
+    observed_dates.extend(drop["posted_at"][:10] for drop in drops)
     generated_at = generated_at or datetime.now(timezone.utc)
     if generated_at.tzinfo is None:
         generated_at = generated_at.replace(tzinfo=timezone.utc)
@@ -128,6 +156,7 @@ def prepare_data(
         "meta": {
             "schema_version": SCHEMA_VERSION,
             "generated_at": generated_at.astimezone(timezone.utc).isoformat(),
+            "latest_timestamp": latest_timestamp,
             "period": {"start": START_DATE.isoformat(), "end": max(observed_dates)},
         },
         "summary": {"registration_count": len(users), "drop_count": len(drops)},

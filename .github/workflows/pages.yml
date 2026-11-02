@@ -47,7 +47,7 @@ jobs:
             --drops-csv $dropsCsv `
             --output json/nakanoshima_dashboard.json
           New-Item -ItemType Directory -Force -Path _site/json | Out-Null
-          Copy-Item index.html, dashboard.css, dashboard.js -Destination _site
+          Copy-Item index.html, users.html, drops.html, dashboard.css, dashboard.js, dashboard-data.js, users.js, drops.js, config.js -Destination _site
           Copy-Item json/nakanoshima_dashboard.json -Destination _site/json
 
       - name: Upload Pages artifact

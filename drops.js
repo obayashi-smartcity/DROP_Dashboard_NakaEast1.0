@@ -6,6 +6,13 @@ const dropElements = {
   mapNote: document.getElementById("map-note"),
   list: document.getElementById("drop-list"),
   listCount: document.getElementById("drop-list-count"),
+  dialog: document.getElementById("post-dialog"),
+  dialogClose: document.getElementById("post-dialog-close"),
+  dialogImage: document.getElementById("post-dialog-image"),
+  dialogImageFallback: document.getElementById("post-dialog-image-fallback"),
+  dialogAuthor: document.getElementById("post-dialog-author"),
+  dialogTime: document.getElementById("post-dialog-time"),
+  dialogText: document.getElementById("post-dialog-text"),
   generatedAt: document.getElementById("generated-at"),
   message: document.getElementById("load-message"),
 };
@@ -26,19 +33,40 @@ function timestampDate(value) {
   return new Date(/[zZ]|[+-]\d{2}:?\d{2}$/.test(normalized) ? normalized : `${normalized}+09:00`);
 }
 
-function popupContent(post) {
-  const content = document.createElement("div");
-  content.className = "map-popup";
-  const name = document.createElement("strong");
-  name.textContent = post.nickname || "ニックネームなし";
-  const time = document.createElement("time");
-  time.dateTime = timestampDate(post.posted_at).toISOString();
-  time.textContent = dropDateFormat.format(timestampDate(post.posted_at));
-  const sentence = document.createElement("p");
-  sentence.textContent = post.sentence || "本文なし";
-  content.append(name, time, sentence);
-  return content;
+function safeImageUrl(value) {
+  if (typeof value !== "string" || !value.trim()) return "";
+  try {
+    const url = new URL(value, window.location.href);
+    return url.protocol === "https:" || url.origin === window.location.origin ? url.href : "";
+  } catch {
+    return "";
+  }
 }
+
+function openPostDialog(post) {
+  const imageUrl = safeImageUrl(post.image_file_path) || safeImageUrl(post.image_file_path_thumbnail);
+  dropElements.dialogAuthor.textContent = post.nickname || "ニックネームなし";
+  dropElements.dialogTime.dateTime = timestampDate(post.posted_at).toISOString();
+  dropElements.dialogTime.textContent = dropDateFormat.format(timestampDate(post.posted_at));
+  dropElements.dialogText.textContent = post.sentence || "本文なし";
+  dropElements.dialogImage.hidden = !imageUrl;
+  dropElements.dialogImageFallback.hidden = Boolean(imageUrl);
+  dropElements.dialogImage.removeAttribute("src");
+  if (imageUrl) {
+    dropElements.dialogImage.src = imageUrl;
+    dropElements.dialogImage.alt = `${post.nickname || "投稿者"}の投稿画像`;
+  }
+  if (!dropElements.dialog.open) dropElements.dialog.showModal();
+}
+
+dropElements.dialogClose.addEventListener("click", () => dropElements.dialog.close());
+dropElements.dialog.addEventListener("click", (event) => {
+  if (event.target === dropElements.dialog) dropElements.dialog.close();
+});
+dropElements.dialogImage.addEventListener("error", () => {
+  dropElements.dialogImage.hidden = true;
+  dropElements.dialogImageFallback.hidden = false;
+});
 
 function renderDropList(posts, mapState) {
   dropElements.listCount.textContent = `${dropNumberFormat.format(posts.length)}件`;
@@ -54,26 +82,46 @@ function renderDropList(posts, mapState) {
   [...posts].sort((left, right) => right.posted_at.localeCompare(left.posted_at)).forEach((post) => {
     const row = document.createElement("button");
     row.type = "button";
-    row.className = "drop-row";
-    row.title = "地図で投稿地点を表示";
+    row.className = "drop-card";
+    row.title = "投稿詳細を表示";
+    const media = document.createElement("span");
+    media.className = "post-card-media";
+    const imageUrl = safeImageUrl(post.image_file_path_thumbnail) || safeImageUrl(post.image_file_path);
+    if (imageUrl) {
+      const image = document.createElement("img");
+      image.className = "post-card-image";
+      image.src = imageUrl;
+      image.alt = "";
+      image.loading = "lazy";
+      image.addEventListener("error", () => image.hidden = true);
+      media.append(image);
+    } else {
+      const imageFallback = document.createElement("span");
+      imageFallback.className = "post-image-fallback";
+      imageFallback.textContent = "画像はありません";
+      media.append(imageFallback);
+    }
+    const body = document.createElement("span");
+    body.className = "post-card-body";
     const meta = document.createElement("span");
-    meta.className = "drop-meta";
+    meta.className = "post-card-meta";
     const time = document.createElement("time");
     time.dateTime = timestampDate(post.posted_at).toISOString();
     time.textContent = dropDateFormat.format(timestampDate(post.posted_at));
     const nickname = document.createElement("strong");
     nickname.textContent = post.nickname || "ニックネームなし";
-    meta.append(time, nickname);
+    meta.append(nickname, time);
     const sentence = document.createElement("span");
-    sentence.className = "drop-sentence";
+    sentence.className = "post-card-sentence";
     sentence.textContent = post.sentence || "本文なし";
-    row.append(meta, sentence);
+    body.append(meta, sentence);
+    row.append(media, body);
     row.addEventListener("click", () => {
       const marker = mapState.markers.get(post);
       if (marker && mapState.map) {
         mapState.map.flyTo(marker.getLatLng(), Math.max(mapState.map.getZoom(), 16), { duration: 0.35 });
-        marker.openPopup();
       }
+      openPostDialog(post);
     });
     fragment.append(row);
   });
@@ -106,7 +154,7 @@ function initializeMap(posts) {
       weight: 2,
       fillColor: "#c45b42",
       fillOpacity: 0.95,
-    }).bindPopup(popupContent(post), { maxWidth: 280 });
+    }).on("click", () => openPostDialog(post));
     marker.addTo(map);
     markers.set(post, marker);
     points.push([latitude, longitude]);

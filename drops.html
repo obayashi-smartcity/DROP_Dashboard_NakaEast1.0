@@ -50,7 +50,7 @@
         <section class="section map-section" aria-labelledby="map-title">
           <div class="section-heading">
             <div><p class="eyebrow">POST MAP</p><h2 id="map-title">投稿地点</h2></div>
-            <span class="section-note">マーカーを選択すると投稿を表示</span>
+            <span class="section-note">ピンを選択すると投稿詳細を表示</span>
           </div>
           <div class="map-frame"><div id="post-map" role="application" aria-label="中之島の投稿地点マップ"></div></div>
           <p class="map-note" id="map-note">投稿位置を読み込み中</p>
@@ -63,6 +63,20 @@
           </div>
           <div class="drop-list" id="drop-list" aria-live="polite"></div>
         </section>
+
+        <dialog class="post-dialog" id="post-dialog" aria-labelledby="post-dialog-author">
+          <div class="post-dialog-shell">
+            <button class="post-dialog-close" id="post-dialog-close" type="button" aria-label="投稿詳細を閉じる">&times;</button>
+            <div class="post-dialog-media">
+              <img id="post-dialog-image" alt="投稿画像" hidden>
+              <span class="post-image-fallback" id="post-dialog-image-fallback">画像はありません</span>
+            </div>
+            <div class="post-dialog-body">
+              <div class="post-dialog-meta"><strong id="post-dialog-author"></strong><time id="post-dialog-time"></time></div>
+              <p id="post-dialog-text"></p>
+            </div>
+          </div>
+        </dialog>
 
         <p class="load-message" id="load-message" hidden></p>
         <footer class="page-footer">JSON生成日時 <time id="generated-at">—</time></footer>

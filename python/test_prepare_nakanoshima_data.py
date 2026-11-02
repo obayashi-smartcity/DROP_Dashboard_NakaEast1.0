@@ -8,7 +8,7 @@ from pathlib import Path
 from prepare_nakanoshima_data import prepare_data
 
 
-USER_COLUMNS = ["account_id", "account_name", "created_at", "inflow_event_id", "del_flg"]
+USER_COLUMNS = ["account_id", "account_name", "created_at", "inflow_event_id", "gender", "age_group", "del_flg"]
 DROP_COLUMNS = [
     "artwork_id",
     "tenant",
@@ -17,6 +17,7 @@ DROP_COLUMNS = [
     "sentence",
     "account_id",
     "image_file_path",
+    "image_file_path_thumbnail",
     "latitude",
     "longitude",
 ]
@@ -46,6 +47,8 @@ class PrepareNakanoshimaDataTests(unittest.TestCase):
                     "account_name": "Before",
                     "created_at": "2026-10-16 23:59:59",
                     "inflow_event_id": "nakanoshima",
+                    "gender": "男性",
+                    "age_group": "40代",
                     "del_flg": "False",
                 },
                 {
@@ -53,6 +56,8 @@ class PrepareNakanoshimaDataTests(unittest.TestCase):
                     "account_name": "First Nick",
                     "created_at": "2026-10-17 00:00:00",
                     "inflow_event_id": "nakanoshima",
+                    "gender": "女性",
+                    "age_group": "30代",
                     "del_flg": "True",
                 },
                 {
@@ -60,6 +65,8 @@ class PrepareNakanoshimaDataTests(unittest.TestCase):
                     "account_name": "Later Nick",
                     "created_at": "2026-10-18 12:00:00",
                     "inflow_event_id": "nakanoshima",
+                    "gender": "女性",
+                    "age_group": "30代",
                     "del_flg": "True",
                 },
                 {
@@ -67,6 +74,8 @@ class PrepareNakanoshimaDataTests(unittest.TestCase):
                     "account_name": "Other",
                     "created_at": "2026-10-17 08:00:00",
                     "inflow_event_id": "another-event",
+                    "gender": "無回答",
+                    "age_group": "",
                     "del_flg": "False",
                 },
             ],
@@ -83,6 +92,7 @@ class PrepareNakanoshimaDataTests(unittest.TestCase):
                     "sentence": "<script>alert(1)</script>",
                     "account_id": "duplicate",
                     "image_file_path": "https://private.invalid/image.jpg",
+                    "image_file_path_thumbnail": "https://private.invalid/image_thumbnail.jpg",
                     "latitude": "34.7",
                     "longitude": "135.5",
                 },
@@ -94,6 +104,7 @@ class PrepareNakanoshimaDataTests(unittest.TestCase):
                     "sentence": "Do not include",
                     "account_id": "unknown",
                     "image_file_path": "",
+                    "image_file_path_thumbnail": "",
                     "latitude": "",
                     "longitude": "",
                 },
@@ -105,6 +116,7 @@ class PrepareNakanoshimaDataTests(unittest.TestCase):
                     "sentence": "Do not include",
                     "account_id": "duplicate",
                     "image_file_path": "",
+                    "image_file_path_thumbnail": "",
                     "latitude": "",
                     "longitude": "",
                 },
@@ -122,22 +134,25 @@ class PrepareNakanoshimaDataTests(unittest.TestCase):
         self.assertEqual(payload["summary"], {"registration_count": 1, "drop_count": 1})
         self.assertEqual(payload["users"][0]["account_id"], "duplicate")
         self.assertEqual(payload["users"][0]["nickname"], "First Nick")
+        self.assertEqual(payload["users"][0]["gender"], "女性")
+        self.assertEqual(payload["users"][0]["age_group"], "30代")
         self.assertEqual(payload["registrations"][0]["date"], "2026-10-17")
         self.assertEqual(payload["registrations"][0]["nicknames"], ["First Nick"])
         self.assertEqual(payload["drops"][0]["nickname"], "First Nick")
         self.assertEqual(payload["drops"][0]["latitude"], 34.7)
         self.assertEqual(payload["drops"][0]["longitude"], 135.5)
+        self.assertEqual(payload["drops"][0]["image_file_path"], "https://private.invalid/image.jpg")
+        self.assertEqual(payload["drops"][0]["image_file_path_thumbnail"], "https://private.invalid/image_thumbnail.jpg")
         self.assertEqual(payload["meta"]["latest_timestamp"], "2026-10-17 09:00:00")
         self.assertNotIn("not-registered", json.dumps(payload))
 
-    def test_public_payload_keeps_only_post_coordinates(self) -> None:
+    def test_public_payload_includes_approved_attributes_images_and_coordinates(self) -> None:
         serialized = json.dumps(self.build_data())
 
         self.assertIn('"account_id": "duplicate"', serialized)
         self.assertIn('"latitude": 34.7', serialized)
         self.assertIn('"longitude": 135.5', serialized)
-        self.assertNotIn("image_file_path", serialized)
-        self.assertNotIn("private.invalid", serialized)
+        self.assertIn('"image_file_path": "https://private.invalid/image.jpg"', serialized)
         self.assertNotIn('"latitude"', json.dumps(self.build_data()["users"]))
 
     def test_tenant_mismatch_stops_generation(self) -> None:

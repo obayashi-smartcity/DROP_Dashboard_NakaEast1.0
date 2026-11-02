@@ -195,7 +195,7 @@ h1 {
 .user-list { padding: 0 24px 12px; }
 .user-row {
   display: grid;
-  grid-template-columns: minmax(150px, 210px) minmax(0, 1fr);
+  grid-template-columns: minmax(180px, 220px) minmax(0, 1fr) 90px 100px;
   gap: 18px;
   padding: 12px 0;
   border-top: 1px solid var(--line);
@@ -204,34 +204,48 @@ h1 {
 }
 .user-time { color: var(--muted); font-family: var(--font-body); font-size: 10px; white-space: nowrap; }
 .user-nickname { min-width: 0; overflow-wrap: anywhere; }
+.user-attribute { color: var(--muted); font-size: 11px; }
 .map-frame { height: min(62vh, 590px); min-height: 340px; margin: 0 12px; background: #e9edeb; }
 #post-map { width: 100%; height: 100%; background: #e9edeb; }
 .map-note { margin: 0; padding: 11px 24px 16px; color: var(--muted); font-size: 10px; }
-.map-popup { display: grid; gap: 6px; min-width: 180px; font-family: var(--font-jp); }
-.map-popup strong { font-size: 12px; overflow-wrap: anywhere; }
-.map-popup time { color: var(--muted); font-family: var(--font-body); font-size: 10px; }
-.map-popup p { margin: 0; font-size: 11px; line-height: 1.65; white-space: pre-wrap; overflow-wrap: anywhere; }
-.drop-list { padding: 0 24px 8px; }
-.drop-row {
-  width: 100%;
-  display: grid;
-  grid-template-columns: minmax(150px, 200px) minmax(0, 1fr);
-  align-items: start;
-  gap: 18px;
-  padding: 15px 0;
-  border: 0;
-  border-top: 1px solid var(--line);
-  background: transparent;
+.drop-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; padding: 0 24px 22px; }
+.drop-card {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  border: 1px solid var(--line);
+  background: var(--surface);
   color: var(--ink);
   font: inherit;
   text-align: left;
   cursor: pointer;
+  transition: transform 150ms ease, border-color 150ms ease, box-shadow 150ms ease;
 }
-.drop-row:hover, .drop-row:focus-visible { background: var(--paper); outline: none; }
-.drop-meta { display: flex; flex-direction: column; gap: 5px; }
-.drop-meta time { color: var(--muted); font-size: 10px; }
-.drop-meta strong { font-family: var(--font-jp); font-size: 12px; overflow-wrap: anywhere; }
-.drop-sentence { min-width: 0; font-family: var(--font-jp); font-size: 12px; line-height: 1.8; white-space: pre-wrap; overflow-wrap: anywhere; }
+.drop-card:hover, .drop-card:focus-visible { transform: translateY(-2px); border-color: var(--coral); box-shadow: 0 6px 18px rgba(25, 38, 33, .1); outline: none; }
+.post-card-media { position: relative; aspect-ratio: 4 / 3; display: grid; place-items: center; overflow: hidden; background: #e9edeb; }
+.post-card-image { width: 100%; height: 100%; object-fit: cover; }
+.post-card-image[hidden] { display: none; }
+.post-image-fallback { color: var(--muted); font-size: 11px; }
+.post-card-media > .post-image-fallback { position: absolute; }
+.post-card-body { display: flex; flex-direction: column; gap: 8px; flex: 1; padding: 12px 13px 14px; }
+.post-card-meta { display: flex; flex-direction: column; gap: 4px; }
+.post-card-meta strong { font-family: var(--font-jp); font-size: 12px; overflow-wrap: anywhere; }
+.post-card-meta time { color: var(--muted); font-size: 10px; }
+.post-card-sentence { min-height: 4.8em; display: -webkit-box; overflow: hidden; color: var(--ink); font-family: var(--font-jp); font-size: 12px; line-height: 1.6; white-space: pre-wrap; overflow-wrap: anywhere; -webkit-box-orient: vertical; -webkit-line-clamp: 3; }
+.post-dialog { position: fixed; width: min(920px, calc(100% - 32px)); max-width: none; max-height: min(90vh, 820px); padding: 0; border: 0; background: var(--surface); color: var(--ink); overflow: visible; }
+.post-dialog::backdrop { background: rgba(18, 27, 23, .68); }
+.post-dialog-shell { position: relative; display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(260px, .8fr); min-height: 360px; }
+.post-dialog-close { position: absolute; z-index: 1; top: 10px; right: 10px; width: 38px; height: 38px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); font-size: 25px; line-height: 1; cursor: pointer; }
+.post-dialog-close:hover, .post-dialog-close:focus-visible { border-color: var(--coral); outline: none; }
+.post-dialog-media { min-height: 360px; display: grid; place-items: center; overflow: hidden; background: #e9edeb; }
+.post-dialog-media img { display: block; width: 100%; height: 100%; max-height: 78vh; object-fit: contain; }
+.post-dialog-media img[hidden] { display: none; }
+.post-dialog-body { align-self: center; padding: 44px 30px 30px; }
+.post-dialog-meta { display: grid; gap: 7px; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid var(--line); }
+.post-dialog-meta strong { font-family: var(--font-jp); font-size: 15px; overflow-wrap: anywhere; }
+.post-dialog-meta time { color: var(--muted); font-size: 11px; }
+.post-dialog-body p { margin: 0; font-family: var(--font-jp); font-size: 14px; line-height: 1.9; white-space: pre-wrap; overflow-wrap: anywhere; }
 [hidden] { display: none !important; }
 
 @media (max-width: 700px) {
@@ -259,11 +273,19 @@ h1 {
   .daily-list { grid-template-columns: 1fr; }
   .daily-row { grid-template-columns: 91px minmax(0, 1fr) 24px; gap: 8px; }
   .user-list, .drop-list { padding-right: 16px; padding-left: 16px; }
-  .user-row { grid-template-columns: 112px minmax(0, 1fr); gap: 12px; }
+  .user-row { grid-template-columns: minmax(0, 1fr) auto; gap: 6px 12px; }
+  .user-time { grid-column: 1 / -1; }
+  .user-attribute { text-align: right; }
   .map-frame { height: 48vh; min-height: 300px; margin: 0 8px; }
   .map-note { padding-right: 16px; padding-left: 16px; }
-  .drop-row { grid-template-columns: 1fr; gap: 7px; }
-  .drop-meta { flex-direction: row; flex-wrap: wrap; align-items: baseline; gap: 5px 12px; }
+  .drop-list { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; padding-right: 16px; padding-left: 16px; }
+  .post-card-body { padding: 10px; }
+  .post-card-meta strong { font-size: 11px; }
+  .post-card-sentence { font-size: 11px; }
+  .post-dialog-shell { grid-template-columns: 1fr; }
+  .post-dialog-media { min-height: 0; aspect-ratio: 4 / 3; max-height: 48vh; }
+  .post-dialog-media img { max-height: 48vh; }
+  .post-dialog-body { padding: 20px; }
   .post-list { padding: 0 16px 2px; }
   .post { grid-template-columns: 1fr; gap: 8px; padding: 14px 0 16px; }
   .post-meta { gap: 3px; }

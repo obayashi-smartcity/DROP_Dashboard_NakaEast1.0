@@ -22,6 +22,6 @@ python -m http.server --bind 127.0.0.1 8000
 3. リポジトリ設定のPagesで公開元を`GitHub Actions`にします。
 4. 保護されたブランチ上で`Deploy Nakanoshima dashboard` workflowを手動実行します。workflow_dispatch以外では起動しません。
 
-公開時はPages artifactにJSONが含まれます。URLを告知しなくても、公開後は誰でもURLから閲覧・保存・共有できます。JSONには`account_id`、ニックネーム、投稿本文と、地図表示用に対象投稿の緯度・経度が含まれます。公開承認を得たデータだけをrunnerに配置してください。元CSVと画像URLはartifactに含めません。CARTO APIキーはブラウザーから参照される公開設定です。
+公開時はPages artifactにJSONが含まれます。URLを告知しなくても、公開後は誰でもURLから閲覧・保存・共有できます。JSONには`account_id`、ニックネーム、登録日時、年代、性別、投稿本文、地図表示用の対象投稿の緯度・経度、および投稿画像の`image_file_path`と`image_file_path_thumbnail`が含まれます。画像ファイル本体はartifactへコピーせず、ブラウザーから各URLを読み込みます。公開承認を得たデータと画像URLだけをrunnerに配置してください。CARTO APIキーはブラウザーから参照される公開設定です。
 
 データ更新後の再公開は、専用runner上のCSVを更新してworkflowを再実行します。対象件数が0件、tenant不一致、キー欠損・投稿ID重複、日付不正があればJSON生成を中止します。

@@ -15,6 +15,8 @@ const userDateFormat = new Intl.DateTimeFormat("ja-JP", {
   month: "short",
   day: "numeric",
   weekday: "short",
+  hour: "2-digit",
+  minute: "2-digit",
 });
 
 function renderUsers(users) {
@@ -38,7 +40,13 @@ function renderUsers(users) {
     const nickname = document.createElement("span");
     nickname.className = "user-nickname";
     nickname.textContent = user.nickname || "ニックネームなし";
-    row.append(time, nickname);
+    const age = document.createElement("span");
+    age.className = "user-attribute";
+    age.textContent = user.age_group || "年代未設定";
+    const gender = document.createElement("span");
+    gender.className = "user-attribute";
+    gender.textContent = user.gender || "性別未回答";
+    row.append(time, nickname, age, gender);
     fragment.append(row);
   });
   userElements.list.replaceChildren(fragment);

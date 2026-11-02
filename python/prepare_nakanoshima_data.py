@@ -51,7 +51,8 @@ def prepare_data(
     generated_at: datetime | None = None,
 ) -> dict[str, Any]:
     users_rows = read_csv(
-        users_csv, {"account_id", "account_name", "created_at", "inflow_event_id"}
+        users_csv,
+        {"account_id", "account_name", "created_at", "inflow_event_id", "gender", "age_group"},
     )
     drops_rows = read_csv(
         drops_csv,
@@ -95,6 +96,8 @@ def prepare_data(
                 "account_id": account_id,
                 "nickname": nickname,
                 "created_at": row["created_at"],
+                "gender": row.get("gender", "") or "",
+                "age_group": row.get("age_group", "") or "",
             }
         )
     users.sort(key=lambda user: (user["created_at"], user["account_id"]))
@@ -137,6 +140,8 @@ def prepare_data(
                 "account_id": account_id,
                 "nickname": users_by_id[account_id]["account_name"],
                 "sentence": row["sentence"],
+                "image_file_path": row.get("image_file_path", "") or "",
+                "image_file_path_thumbnail": row.get("image_file_path_thumbnail", "") or "",
                 "latitude": latitude,
                 "longitude": longitude,
             }

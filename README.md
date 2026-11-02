@@ -1,6 +1,6 @@
-# 中之島 DROP ダッシュボード
+# 中之島EASTよりみちPROJECT 2026 DROP ダッシュボード
 
-中之島イベントのアカウント登録と投稿を確認する静的ダッシュボードです。HTML・CSS・JavaScriptで構成し、投稿画像はCSVに記録されたURLからブラウザーで直接読み込みます。
+中之島EASTよりみちPROJECT 2026のアカウント登録と投稿を確認する静的ダッシュボードです。HTML・CSS・JavaScriptで構成し、投稿画像はCSVに記録されたURLからブラウザーで直接読み込みます。
 
 ## ページ
 
@@ -12,7 +12,7 @@
 
 入力元は `.memo/datasource/mart_user.csv` と `.memo/datasource/mart_drop.csv` です。`.memo/` はローカルの入力データや作業メモを置く場所で、Git管理・公開の対象ではありません。
 
-`python/prepare_nakanoshima_data.py` は中之島イベントの対象データを抽出し、アカウントIDで登録と投稿を紐づけ、`json/nakanoshima_dashboard.json` を生成します。JSONには公開対象の登録属性、投稿本文、画像URL、対象投稿の座標が含まれます。画像ファイル自体はコピーしません。
+`python/prepare_nakanoshima_data.py` は中之島EASTよりみちPROJECT 2026の対象データを抽出し、アカウントIDで登録と投稿を紐づけ、`json/nakanoshima_dashboard.json` を生成します。JSONには公開対象の登録属性、投稿本文、画像URL、対象投稿の座標が含まれます。画像ファイル自体はコピーしません。
 
 入力CSVは `.memo/` に置き、Gitには追加しません。生成した `json/nakanoshima_dashboard.json` はダッシュボードの公開データとしてGit追跡します。公開前にJSONの差分と、登録属性・投稿本文・座標・画像URLが公開可能な内容であることを確認してください。
 

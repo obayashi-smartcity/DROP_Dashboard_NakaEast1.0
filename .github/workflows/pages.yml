@@ -1,0 +1,67 @@
+name: Deploy Nakanoshima dashboard
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    if: github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
+    runs-on: [self-hosted, windows, x64, nakanoshima-data]
+    steps:
+      - name: Check out dashboard source
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Test data preparation
+        shell: pwsh
+        run: python -m unittest discover -s python -v
+
+      - name: Generate JSON and assemble Pages artifact
+        shell: pwsh
+        env:
+          DATA_DIR: ${{ vars.NAKANOSHIMA_DATA_DIR }}
+        run: |
+          if ([string]::IsNullOrWhiteSpace($env:DATA_DIR)) {
+            throw "Set the repository variable NAKANOSHIMA_DATA_DIR to the private CSV directory."
+          }
+          $usersCsv = Join-Path $env:DATA_DIR "mart_user.csv"
+          $dropsCsv = Join-Path $env:DATA_DIR "mart_drop.csv"
+          if (-not (Test-Path $usersCsv) -or -not (Test-Path $dropsCsv)) {
+            throw "The private data directory must contain mart_user.csv and mart_drop.csv."
+          }
+          python python/prepare_nakanoshima_data.py `
+            --users-csv $usersCsv `
+            --drops-csv $dropsCsv `
+            --output json/nakanoshima_dashboard.json
+          New-Item -ItemType Directory -Force -Path _site/json | Out-Null
+          Copy-Item index.html, dashboard.css, dashboard.js -Destination _site
+          Copy-Item json/nakanoshima_dashboard.json -Destination _site/json
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

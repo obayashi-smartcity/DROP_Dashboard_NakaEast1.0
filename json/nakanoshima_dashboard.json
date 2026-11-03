@@ -1,16 +1,16 @@
 {
   "meta": {
     "schema_version": 1,
-    "generated_at": "2026-11-02T02:48:50.110546+00:00",
-    "latest_timestamp": "2026-11-01 19:26:20.705",
+    "generated_at": "2026-11-03T23:48:59.556842+00:00",
+    "latest_timestamp": "2026-11-03 19:17:41.776",
     "period": {
       "start": "2026-10-17",
-      "end": "2026-11-01"
+      "end": "2026-11-03"
     }
   },
   "summary": {
-    "registration_count": 36,
-    "drop_count": 14
+    "registration_count": 40,
+    "drop_count": 18
   },
   "registrations": [
     {
@@ -108,6 +108,16 @@
         "MF_Camera",
         "あかね"
       ]
+    },
+    {
+      "date": "2026-11-03",
+      "count": 4,
+      "nicknames": [
+        "あり",
+        "しおりん",
+        "ふみ",
+        "ヒカル"
+      ]
     }
   ],
   "users": [
@@ -179,7 +189,7 @@
       "nickname": "キタちゃん",
       "created_at": "2026-10-17 16:48:59",
       "gender": "女性",
-      "age_group": "20代"
+      "age_group": "30代"
     },
     {
       "account_id": "f7b4ea08-7091-70c6-6281-d5825e51037d",
@@ -362,6 +372,34 @@
       "created_at": "2026-11-01 19:18:06",
       "gender": "女性",
       "age_group": "40代"
+    },
+    {
+      "account_id": "07d4bae8-0031-7011-c9df-de72644e6ca3",
+      "nickname": "ふみ",
+      "created_at": "2026-11-03 18:02:14",
+      "gender": "女性",
+      "age_group": "20代"
+    },
+    {
+      "account_id": "e764daf8-6031-705d-87fa-4655cb7824fb",
+      "nickname": "しおりん",
+      "created_at": "2026-11-03 18:03:14",
+      "gender": "女性",
+      "age_group": "20代"
+    },
+    {
+      "account_id": "c714eae8-7011-70a9-4b47-19a6d7dfdf43",
+      "nickname": "あり",
+      "created_at": "2026-11-03 19:13:45",
+      "gender": "女性",
+      "age_group": "20代"
+    },
+    {
+      "account_id": "e7b4ca88-f031-7029-6bd2-06c9821063ce",
+      "nickname": "ヒカル",
+      "created_at": "2026-11-03 19:14:51",
+      "gender": "男性",
+      "age_group": "20代"
     }
   ],
   "drops": [
@@ -504,6 +542,46 @@
       "image_file_path_thumbnail": "https://adpf-poc.com/machiapps/userdata/photos/machi/42ec7b2c-25b9-48d1-ac6e-25aff93328c6_thumbnail.jpeg",
       "latitude": 34.69229810229792,
       "longitude": 135.508654232189
+    },
+    {
+      "posted_at": "2026-11-03 18:07:04.920",
+      "account_id": "e764daf8-6031-705d-87fa-4655cb7824fb",
+      "nickname": "しおりん",
+      "sentence": "おしゃれ かわいい きれい バラ園 黒い鳥",
+      "image_file_path": "https://adpf-poc.com/machiapps/userdata/photos/machi/e981ac99-1f41-481b-9fd4-84abb8f8d685.jpeg",
+      "image_file_path_thumbnail": "https://adpf-poc.com/machiapps/userdata/photos/machi/e981ac99-1f41-481b-9fd4-84abb8f8d685_thumbnail.jpeg",
+      "latitude": 34.69244444444444,
+      "longitude": 135.5074138888889
+    },
+    {
+      "posted_at": "2026-11-03 18:07:22.083",
+      "account_id": "07d4bae8-0031-7011-c9df-de72644e6ca3",
+      "nickname": "ふみ",
+      "sentence": "おしゃれ サンドイッチがおいしい カフェオレがおいしい 川 黒い鳥",
+      "image_file_path": "https://adpf-poc.com/machiapps/userdata/photos/machi/32ca3688-67e6-4ff2-bb9b-053457d11de6.jpeg",
+      "image_file_path_thumbnail": "https://adpf-poc.com/machiapps/userdata/photos/machi/32ca3688-67e6-4ff2-bb9b-053457d11de6_thumbnail.jpeg",
+      "latitude": 34.69181554174129,
+      "longitude": 135.50635181599284
+    },
+    {
+      "posted_at": "2026-11-03 18:10:09.749",
+      "account_id": "e764daf8-6031-705d-87fa-4655cb7824fb",
+      "nickname": "しおりん",
+      "sentence": "おしゃれ 美味しい ピーナッツバター 好き 紅茶",
+      "image_file_path": "https://adpf-poc.com/machiapps/userdata/photos/machi/e272eefa-8c64-4ead-95b1-a1437eb6a5a0.jpeg",
+      "image_file_path_thumbnail": "https://adpf-poc.com/machiapps/userdata/photos/machi/e272eefa-8c64-4ead-95b1-a1437eb6a5a0_thumbnail.jpeg",
+      "latitude": 34.692302777777776,
+      "longitude": 135.50654722222222
+    },
+    {
+      "posted_at": "2026-11-03 19:17:41.776",
+      "account_id": "e7b4ca88-f031-7029-6bd2-06c9821063ce",
+      "nickname": "ヒカル",
+      "sentence": "中之島の 川の上で のんびりと ショッピング帰りに 夜景鑑賞",
+      "image_file_path": "https://adpf-poc.com/machiapps/userdata/photos/machi/4b55b059-d067-43a3-a6ba-c503d6ff71f1.jpeg",
+      "image_file_path_thumbnail": "https://adpf-poc.com/machiapps/userdata/photos/machi/4b55b059-d067-43a3-a6ba-c503d6ff71f1_thumbnail.jpeg",
+      "latitude": 34.692274999999995,
+      "longitude": 135.50866666666667
     }
   ]
 }

@@ -1,16 +1,16 @@
 {
   "meta": {
     "schema_version": 1,
-    "generated_at": "2026-11-03T23:48:59.556842+00:00",
-    "latest_timestamp": "2026-11-03 19:17:41.776",
+    "generated_at": "2026-11-13T02:08:49.771265+00:00",
+    "latest_timestamp": "2026-11-12 16:48:03",
     "period": {
       "start": "2026-10-17",
-      "end": "2026-11-03"
+      "end": "2026-11-12"
     }
   },
   "summary": {
-    "registration_count": 40,
-    "drop_count": 18
+    "registration_count": 45,
+    "drop_count": 19
   },
   "registrations": [
     {
@@ -117,6 +117,29 @@
         "しおりん",
         "ふみ",
         "ヒカル"
+      ]
+    },
+    {
+      "date": "2026-11-04",
+      "count": 1,
+      "nicknames": [
+        "butaneco"
+      ]
+    },
+    {
+      "date": "2026-11-06",
+      "count": 2,
+      "nicknames": [
+        "nalge",
+        "む"
+      ]
+    },
+    {
+      "date": "2026-11-12",
+      "count": 2,
+      "nicknames": [
+        "Botasky",
+        "kiki"
       ]
     }
   ],
@@ -400,6 +423,41 @@
       "created_at": "2026-11-03 19:14:51",
       "gender": "男性",
       "age_group": "20代"
+    },
+    {
+      "account_id": "47c4fae8-50a1-70d3-4ab7-63989cae0b4d",
+      "nickname": "butaneco",
+      "created_at": "2026-11-04 23:13:21",
+      "gender": "女性",
+      "age_group": "60代"
+    },
+    {
+      "account_id": "a7147a68-f0a1-7077-fc56-14aa6bd40d23",
+      "nickname": "む",
+      "created_at": "2026-11-06 09:50:35",
+      "gender": "男性",
+      "age_group": "30代"
+    },
+    {
+      "account_id": "47b42ae8-b051-70b6-b7ff-e3e74a5c037b",
+      "nickname": "nalge",
+      "created_at": "2026-11-06 15:23:45",
+      "gender": "男性",
+      "age_group": "30代"
+    },
+    {
+      "account_id": "37441a98-40d1-7096-d4b0-a1c8fe9cc84a",
+      "nickname": "kiki",
+      "created_at": "2026-11-12 13:09:41",
+      "gender": "男性",
+      "age_group": "30代"
+    },
+    {
+      "account_id": "c7a4aab8-e0b1-702d-80f5-3ef41066dba7",
+      "nickname": "Botasky",
+      "created_at": "2026-11-12 16:48:03",
+      "gender": "男性",
+      "age_group": "50代"
     }
   ],
   "drops": [
@@ -582,6 +640,16 @@
       "image_file_path_thumbnail": "https://adpf-poc.com/machiapps/userdata/photos/machi/4b55b059-d067-43a3-a6ba-c503d6ff71f1_thumbnail.jpeg",
       "latitude": 34.692274999999995,
       "longitude": 135.50866666666667
+    },
+    {
+      "posted_at": "2026-11-12 13:13:02.459",
+      "account_id": "37441a98-40d1-7096-d4b0-a1c8fe9cc84a",
+      "nickname": "kiki",
+      "sentence": "永遠に続くような夜 バラの花に導かれて やってきた中之島公園 その幻想的な世界は 都会のなかの楽園でした",
+      "image_file_path": "https://adpf-poc.com/machiapps/userdata/photos/machi/bac29473-6e07-468d-9209-b60f15c083ff.jpeg",
+      "image_file_path_thumbnail": "https://adpf-poc.com/machiapps/userdata/photos/machi/bac29473-6e07-468d-9209-b60f15c083ff_thumbnail.jpeg",
+      "latitude": 34.692689464240736,
+      "longitude": 135.5078706650808
     }
   ]
 }
